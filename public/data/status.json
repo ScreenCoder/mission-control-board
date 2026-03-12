@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-03-12T04:33:01.730Z",
+  "securityScore": 67,
+  "securitySummary": {
+    "critical": 0,
+    "warn": 2,
+    "info": 1
+  },
+  "findings": [
+    {
+      "checkId": "summary.attack_surface",
+      "severity": "info",
+      "title": "Attack surface summary",
+      "detail": "groups: open=0, allowlist=1\ntools.elevated: enabled\nhooks.webhooks: disabled\nhooks.internal: disabled\nbrowser control: enabled\ntrust model: personal assistant (one trusted operator boundary), not hostile multi-tenant on one shared gateway"
+    },
+    {
+      "checkId": "gateway.trusted_proxies_missing",
+      "severity": "warn",
+      "title": "Reverse proxy headers are not trusted",
+      "detail": "gateway.bind is loopback and gateway.trustedProxies is empty. If you expose the Control UI through a reverse proxy, configure trusted proxies so local-client checks cannot be spoofed.",
+      "remediation": "Set gateway.trustedProxies to your proxy IPs or keep the Control UI local-only."
+    },
+    {
+      "checkId": "gateway.nodes.deny_commands_ineffective",
+      "severity": "warn",
+      "title": "Some gateway.nodes.denyCommands entries are ineffective",
+      "detail": "gateway.nodes.denyCommands uses exact node command-name matching only (for example `system.run`), not shell-text filtering inside a command payload.\n- Unknown command names (not in defaults/allowCommands): camera.snap, camera.clip, screen.record, contacts.add, calendar.add, reminders.add, sms.send",
+      "remediation": "Use exact command names. If you need broader restrictions, remove risky command IDs from allowCommands/default workflows and tighten tools.exec policy."
+    }
+  ],
+  "heartbeatSeconds": 1800,
+  "sessions": 1,
+  "agentCount": 1,
+  "channels": [
+    {
+      "id": "discord",
+      "configured": true,
+      "linked": true,
+      "running": true,
+      "connected": true,
+      "lastError": null
+    }
+  ],
+  "updateText": "OpenClaw status snapshot for deployed Mission Control. Refresh this file from local OpenClaw when you want a new published snapshot.",
+  "statusText": "Deployed static snapshot mode. Local live telemetry stays available in the local-only version.",
+  "mode": "snapshot"
+}

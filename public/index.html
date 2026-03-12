@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniTaker Mission Control</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <div class="bg-orb orb-1"></div>
+      <div class="bg-orb orb-2"></div>
+
+      <header class="hero">
+        <div>
+          <p class="eyebrow">UniTaker Mission Control</p>
+          <h1>Command center for status, security, and shipping work</h1>
+          <p class="sub">Live OpenClaw telemetry, current security posture, and a real kanban board in one place.</p>
+          <div class="hero-badges">
+            <span class="pill">🦄 UniTaker online</span>
+            <span class="pill" id="heroRiskPill">Risk posture loading…</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <div class="refresh-row">
+            <button id="refreshStatus">Refresh now</button>
+            <label class="auto-refresh-toggle">
+              <input id="autoRefreshToggle" type="checkbox" checked />
+              <span>Auto-refresh</span>
+            </label>
+          </div>
+          <span id="lastUpdated">Loading…</span>
+        </div>
+      </header>
+
+      <section class="grid top-grid">
+        <article class="panel score-panel accent-panel">
+          <div class="section-head compact">
+            <div>
+              <p class="section-kicker">Security posture</p>
+              <h2>Security Score</h2>
+            </div>
+            <span id="scoreTrend" class="pill success">Live</span>
+          </div>
+          <div class="score-wrap">
+            <div id="scoreValue" class="score">--</div>
+            <div class="score-meta">
+              <p id="scoreLabel" class="score-label">Checking current posture…</p>
+              <ul id="scoreBreakdown" class="mini-list"></ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel stat-panel">
+          <div class="section-head compact">
+            <div>
+              <p class="section-kicker">Runtime</p>
+              <h2>Operational Status</h2>
+            </div>
+          </div>
+          <div id="statusCards" class="stat-cards"></div>
+        </article>
+      </section>
+
+      <section class="grid middle-grid">
+        <article class="panel issues-panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Audit findings</p>
+              <h2>Outstanding Security Issues</h2>
+            </div>
+            <span id="issueCount" class="pill">0 issues</span>
+          </div>
+          <div id="issuesList" class="issues"></div>
+        </article>
+
+        <article class="panel details-panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Signals</p>
+              <h2>Channels + Update State</h2>
+            </div>
+          </div>
+          <div id="channelSignals" class="channel-signals"></div>
+          <h3>OpenClaw update status</h3>
+          <pre id="updateText" class="terminal"></pre>
+        </article>
+      </section>
+
+      <section class="panel kanban-panel">
+        <div class="section-head stack-mobile">
+          <div>
+            <p class="section-kicker">Execution</p>
+            <h2>Work Board</h2>
+          </div>
+          <form id="newTaskForm" class="new-task-form">
+            <input id="taskTitle" name="title" type="text" placeholder="Add a task" required />
+            <input id="taskDescription" name="description" type="text" placeholder="Optional detail" />
+            <button type="submit">Add to backlog</button>
+          </form>
+        </div>
+        <div id="kanbanBoard" class="kanban-board"></div>
+      </section>
+    </div>
+
+    <template id="issueTemplate">
+      <article class="issue-card">
+        <div class="issue-head">
+          <span class="issue-severity"></span>
+          <code class="issue-id"></code>
+        </div>
+        <h3 class="issue-title"></h3>
+        <p class="issue-detail"></p>
+        <p class="issue-remediation"></p>
+      </article>
+    </template>
+
+    <template id="taskTemplate">
+      <article class="task-card" draggable="true">
+        <strong class="task-title"></strong>
+        <p class="task-description"></p>
+        <div class="task-actions"></div>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

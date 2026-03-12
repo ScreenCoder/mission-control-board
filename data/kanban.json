@@ -1,0 +1,41 @@
+{
+  "columns": {
+    "backlog": [
+      {
+        "id": "task-reverse-proxy-trust",
+        "title": "Configure trusted reverse proxies if Control UI is proxied",
+        "description": "Set gateway.trustedProxies to the actual proxy IPs, or explicitly keep the Control UI local-only.",
+        "createdAt": "2026-03-12T04:31:00.000Z"
+      },
+      {
+        "id": "task-fix-deny-commands",
+        "title": "Replace ineffective denyCommands entries with exact command IDs",
+        "description": "Audit gateway.nodes.denyCommands and remove unknown entries like camera.snap, camera.clip, screen.record, contacts.add, calendar.add, reminders.add, and sms.send.",
+        "createdAt": "2026-03-12T04:31:30.000Z"
+      }
+    ],
+    "inProgress": [
+      {
+        "id": "task-dashboard-polish",
+        "title": "Polish mission control dashboard UI",
+        "description": "Improve visual hierarchy, add richer status cards, and make the board feel like a real command center.",
+        "createdAt": "2026-03-12T04:32:00.000Z"
+      }
+    ],
+    "blocked": [],
+    "complete": [
+      {
+        "id": "task-permissions-fix",
+        "title": "Lock down OpenClaw credentials directory permissions",
+        "description": "Applied chmod 700 to ~/.openclaw/credentials and re-ran the audit successfully.",
+        "createdAt": "2026-03-12T04:32:30.000Z"
+      },
+      {
+        "id": "task-mission-control",
+        "title": "Build mission control board",
+        "description": "Status, health, security score, issues, and kanban board.",
+        "createdAt": "2026-03-12T04:30:00.000Z"
+      }
+    ]
+  }
+}
